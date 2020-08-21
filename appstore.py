@@ -14,7 +14,7 @@ class AppstoreSpider(scrapy.Spider):
     }
 
     def parse(self, response):
-        category_links = response.xpath("//a[contains(concat('     ',normalize-space(@class),' '),' top-level-genre ')]")
+        category_links = response.xpath("//a[contains(concat(' ',normalize-space(@class),' '),' top-level-genre ')]")
         urls = []
         for link in category_links:
             url = link.css('a::attr(href)').extract_first()
